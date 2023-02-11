@@ -1,0 +1,17 @@
+{
+  "name": "swift-otter/module-order-export",
+  "version": "1.0.0",
+  "description": "Export orders from magento to local ERP",
+  "type": "magento2-module",
+  "require": {
+    "magento/framework": "*"
+  },
+  "autoload": {
+    "files": [
+      "registration.php"
+    ],
+    "psr-4": {
+      "SwiftOtter\\OrderExport\\": ""
+    }
+  }
+}
