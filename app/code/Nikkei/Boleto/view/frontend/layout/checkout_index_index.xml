@@ -23,7 +23,7 @@
                                                             <!-- merge payment method renders here -->
                                                             <item name="children" xsi:type="array">
                                                                 <item name="payments" xsi:type="array">
-                                                                    <item name="component" xsi:type="string"><!--TODO: add js component--></item>
+                                                                    <item name="component" xsi:type="string">Nikkei_Boleto/js/view/payment/boleto</item>
                                                                     <item name="methods" xsi:type="array">
                                                                         <item name="boleto" xsi:type="array">
                                                                             <item name="isBillingAddressRequired" xsi:type="boolean">true</item>

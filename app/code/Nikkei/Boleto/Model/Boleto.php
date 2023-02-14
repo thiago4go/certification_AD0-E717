@@ -1,9 +1,5 @@
 <?php
-/**
- * Copyright © Magento, Inc. All rights reserved.
- * See COPYING.txt for license details.
- */
-namespace Magento\OfflinePayments\Model;
+namespace Nikkei\Boleto\Model;
 
 /**
  * Boleto payment method model

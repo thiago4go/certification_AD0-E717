@@ -4,7 +4,7 @@
         <payment>
             <boleto>
                 <active>1</active>
-                <model><!-- TODO: add model--></model>
+                <model>Nikkei\Boleto\Model\Boleto</model>
                 <order_status>pending</order_status>
                 <title>Boleto Faturado</title>
                 <allowspecific>0</allowspecific>
