@@ -3,7 +3,7 @@
     <type name="Magento\Checkout\Model\CompositeConfigProvider">
         <arguments>
             <argument name="configProviders" xsi:type="array">
-                <item name="boleto_instructions_config_provider" xsi:type="object">Magento\OfflinePayments\Model\InstructionsConfigProvider</item>
+                <item name="boleto_instructions_config_provider" xsi:type="object">Nikkei\Boleto\Model\InstructionsConfigProvider</item>
             </argument>
         </arguments>
     </type>
