@@ -13,7 +13,7 @@ define([
     rendererList.push(
         {
             type: 'boleto',
-            component: 'Magento_OfflinePayments/js/view/payment/method-renderer/boleto-method'
+            component: 'Nikkei_Boleto/js/view/payment/method-renderer/boleto-method'
         }
     );
 

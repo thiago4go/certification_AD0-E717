@@ -1,6 +1,6 @@
 <?php
 namespace Nikkei\Boleto\Model;
-
+use Magento\Quote\Api\Data\PaymentMethodExtensionInterface;
 /**
  * Boleto payment method model
  *
@@ -26,13 +26,6 @@ class Boleto extends \Magento\Payment\Model\Method\AbstractMethod
      * @var string
      */
     protected $_formBlockType = \Nikkei\Boleto\Block\Form\Boleto::class;
-
-    /**
-     * Info instructions block path
-     *
-     * @var string
-     */
-    protected $_infoBlockType = \Magento\Payment\Block\Info\Instructions::class;
 
     /**
      * Availability option
