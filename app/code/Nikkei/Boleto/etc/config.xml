@@ -1,12 +1,14 @@
 <?xml version="1.0"?>
-<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
     <default>
         <payment>
             <boleto>
-                <ativo>1</ativo>
-                <titulo>Boleto Faturado</titulo>
+                <active>1</active>
+                <model><!-- TODO: add model--></model>
                 <order_status>pending</order_status>
+                <title>Boleto Faturado</title>
+                <allowspecific>0</allowspecific>
+                <group>offline</group>
             </boleto>
         </payment>
     </default>
