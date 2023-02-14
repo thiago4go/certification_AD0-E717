@@ -4,7 +4,7 @@
     <module name="Nikkei_Boleto"/>
         <sequence>
             <module name="Magento_Sales"/>
-            <modele name="Magento_OfflinePayments">
+            <modele name="Magento_OfflinePayments"/>
             <module name="Magento_Store"/>
         </sequence>
 </config>
