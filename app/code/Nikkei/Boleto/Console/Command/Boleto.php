@@ -25,5 +25,6 @@ class Boleto extends Command
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         echo "faturado";
+        return 0;
     }
 }
