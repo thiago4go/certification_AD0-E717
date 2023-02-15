@@ -1,8 +1,7 @@
 <?php
-
 use Magento\Framework\Component\ComponentRegistrar;
 
 ComponentRegistrar::register(
     ComponentRegistrar::MODULE,
-    'Nikkei_Boleto',
+    'SwiftOtter_OrderExport',
     __DIR__);

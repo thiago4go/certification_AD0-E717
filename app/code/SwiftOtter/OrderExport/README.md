@@ -1,8 +1,8 @@
 The README.md file content is generated automatically, see [Magento module README.md](https://github.com/magento/devdocs/wiki/Magento-module-README.md) for more information.
 
-# Nikkei_Boleto module
+# SwiftOtter_OrderExport module
 
-Enable a payment method called Boleto at checkout. 
+Export orders from magento to local ERP
 
 ## Installation details
 
@@ -10,9 +10,9 @@ For information about a module installation in Magento 2, see [Enable or disable
 
 ## Extensibility
 
-Extension developers can interact with the Nikkei_Boleto module. For more information about the Magento extension mechanism, see [Magento plug-ins](https://devdocs.magento.com/guides/v2.4/extension-dev-guide/plugins.html).
+Extension developers can interact with the SwiftOtter_OrderExport module. For more information about the Magento extension mechanism, see [Magento plug-ins](https://devdocs.magento.com/guides/v2.4/extension-dev-guide/plugins.html).
 
-[The Magento dependency injection mechanism](https://devdocs.magento.com/guides/v2.4/extension-dev-guide/depend-inj.html) enables you to override the functionality of the Nikkei_Boleto module.
+[The Magento dependency injection mechanism](https://devdocs.magento.com/guides/v2.4/extension-dev-guide/depend-inj.html) enables you to override the functionality of the SwiftOtter_OrderExport module.
 
 ### Layouts
 

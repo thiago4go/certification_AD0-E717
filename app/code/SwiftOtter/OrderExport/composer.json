@@ -1,7 +1,7 @@
 {
-  "name": "nikkei/module-boleto",
+  "name": "swift-otter/module-order-export",
   "version": "1.0.0",
-  "description": "Enable a payment method called Boleto at checkout.",
+  "description": "Export orders from magento to local ERP",
   "type": "magento2-module",
   "require": {
     "magento/framework": "*"
@@ -11,7 +11,7 @@
       "registration.php"
     ],
     "psr-4": {
-      "Nikkei\\Boleto\\": ""
+      "SwiftOtter\\OrderExport\\": ""
     }
   }
 }
