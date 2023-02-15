@@ -18,7 +18,7 @@ class OrderExport extends Command
     protected function configure()
     {
         $this->setName('order-export:run')
-            ->setDescription('Export orders to ERP');
+            ->setDescription('Export orders to ERP')
             ->addArgument(
                 self::ARG_NAME_ORDER_ID,
                 InputArgument::REQUIRED,
@@ -35,7 +35,7 @@ class OrderExport extends Command
                 null,
                 InputOption::VALUE_OPTIONAL,
                 'Merchant notes'
-            )
+            );
     }   
 
     /**
