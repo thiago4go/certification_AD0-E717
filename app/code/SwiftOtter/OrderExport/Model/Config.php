@@ -4,7 +4,6 @@ namespace SwiftOtter\OrderExport\Model;
 
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Store\Model\ScopeInterface;
-use Magento\Tests\NamingConvention\true\string;
 
 class Config
 {
