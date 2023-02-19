@@ -3,6 +3,7 @@
 namespace SwiftOtter\OrderExport\Console\Command;
 
 
+use SwiftOtter\OrderExport\Action\CollectOrderData;
 use SwiftOtter\OrderExport\Model\HeaderData;
 use SwiftOtter\OrderExport\Model\HeaderDataFactory;
 use Symfony\Component\Console\Command\Command;
@@ -17,13 +18,16 @@ class OrderExport extends Command
     const OPT_NAME_SHIP_DATE = 'ship-date';
     const OPT_NAME_MERCHANT_NOTES = 'notes';
     private $headerDataFactory;
+    private CollectOrderData $collectOrderData;
 
     public function __construct(
         HeaderDataFactory $headerDataFactory,
+        CollectOrderData $collectOrderData,
         string $name = null)
     {
         parent::__construct($name);
         $this->headerDataFactory = $headerDataFactory;
+        $this->collectOrderData = $collectOrderData;
     }
 
     /**
@@ -72,7 +76,9 @@ class OrderExport extends Command
             $headerData->setMerchantNotes($notes);
         }
 
-        $output->writeln(print_r($headerData, true));
+        $orderData = $this->collectOrderData->execute($orderID, $headerData);
+
+        $output->writeln(print_r($orderData, true));
 //        $output->writeln(__('Order ID is %1', $orderID));
 //        $output->writeln(__('Notes is "%1"', $notes));
 //        $output->writeln(__('Ship date is %1', $shipDate));
