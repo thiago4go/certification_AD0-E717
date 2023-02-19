@@ -2,6 +2,9 @@
 
 namespace SwiftOtter\OrderExport\Console\Command;
 
+
+use SwiftOtter\OrderExport\Model\HeaderData;
+use SwiftOtter\OrderExport\Model\HeaderDataFactory;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
@@ -13,6 +16,15 @@ class OrderExport extends Command
     const ARG_NAME_ORDER_ID = 'order-id';
     const OPT_NAME_SHIP_DATE = 'ship-date';
     const OPT_NAME_MERCHANT_NOTES = 'notes';
+    private $headerDataFactory;
+
+    public function __construct(
+        HeaderDataFactory $headerDataFactory,
+        string $name = null)
+    {
+        parent::__construct($name);
+        $this->headerDataFactory = $headerDataFactory;
+    }
 
     /**
      * @inheritdoc
@@ -51,9 +63,19 @@ class OrderExport extends Command
         $notes = $input->getOption(self::OPT_NAME_MERCHANT_NOTES);
         $shipDate = $input->getOption(self::OPT_NAME_SHIP_DATE);
 
-        $output->writeln(__('Order ID is %1', $orderID));
-        $output->writeln(__('Notes is "%1"', $notes));
-        $output->writeln(__('Ship date is %1', $shipDate));
+        /** @var HeaderData $headerData */
+        $headerData =$this->headerDataFactory->create();
+        if ($shipDate){
+            $headerData->setShipDate(new \DateTime($shipDate));
+        }
+        if ($notes) {
+            $headerData->setMerchantNotes($notes);
+        }
+
+        $output->writeln(print_r($headerData, true));
+//        $output->writeln(__('Order ID is %1', $orderID));
+//        $output->writeln(__('Notes is "%1"', $notes));
+//        $output->writeln(__('Ship date is %1', $shipDate));
 
         return 0;
     }
