@@ -71,3 +71,5 @@ atlassian*
 /generated/*
 !/generated/.htaccess
 .DS_Store
+/training-modules/*
+
