@@ -3,7 +3,8 @@
 namespace SwiftOtter\OrderExport\Console\Command;
 
 
-use SwiftOtter\OrderExport\Action\CollectOrderData;
+
+use SwiftOtter\OrderExport\Action\ExportOrder;
 use SwiftOtter\OrderExport\Model\HeaderData;
 use SwiftOtter\OrderExport\Model\HeaderDataFactory;
 use Symfony\Component\Console\Command\Command;
@@ -17,17 +18,24 @@ class OrderExport extends Command
     const ARG_NAME_ORDER_ID = 'order-id';
     const OPT_NAME_SHIP_DATE = 'ship-date';
     const OPT_NAME_MERCHANT_NOTES = 'notes';
+    /**
+     * @var HeaderDataFactory
+     */
     private $headerDataFactory;
-    private CollectOrderData $collectOrderData;
+    /**
+     * @var ExportOrder
+     */
+    private ExportOrder $exportOrder;
+
 
     public function __construct(
         HeaderDataFactory $headerDataFactory,
-        CollectOrderData $collectOrderData,
+        ExportOrder $exportOrder,
         string $name = null)
     {
         parent::__construct($name);
         $this->headerDataFactory = $headerDataFactory;
-        $this->collectOrderData = $collectOrderData;
+        $this->exportOrder = $exportOrder;
     }
 
     /**
@@ -76,13 +84,18 @@ class OrderExport extends Command
             $headerData->setMerchantNotes($notes);
         }
 
-        $orderData = $this->collectOrderData->execute($orderID, $headerData);
-
-        $output->writeln(print_r($orderData, true));
-//        $output->writeln(__('Order ID is %1', $orderID));
-//        $output->writeln(__('Notes is "%1"', $notes));
-//        $output->writeln(__('Ship date is %1', $shipDate));
-
+        $result = $this->exportOrder->execute((int)$orderID, $headerData);
+        $suceess = $result['success'] ?? false;
+        if ($suceess) {
+            $output->writeln('Order exported successfully');
+        } else {
+            $msg = $result['error'] ?? null;
+            if ($msg===null) {
+                $msg = __(  'Unexpected errors occurred during order export');
+            }
+            $output->writeln('Order export failed because: ' . $msg);
+            return 1;
+        }
         return 0;
     }
 }
