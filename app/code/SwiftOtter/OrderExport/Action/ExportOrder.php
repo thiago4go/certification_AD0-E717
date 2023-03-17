@@ -8,6 +8,7 @@ use Magento\Sales\Api\OrderRepositoryInterface;
 use Magento\Store\Model\ScopeInterface;
 use SwiftOtter\OrderExport\Model\Config;
 use SwiftOtter\OrderExport\Model\HeaderData;
+use SwiftOtter\OrderExport\Action\PushDetailsToWebService;
 
 class ExportOrder
 {
@@ -23,15 +24,21 @@ class ExportOrder
      * @var CollectOrderData
      */
     private CollectOrderData $collectOrderData;
+    /**
+     * @var PushDetailsToWebService
+     */
+    private PushDetailsToWebService $pushDetailsToWebService;
 
     public function __construct(
         OrderRepositoryInterface $orderRepository,
         Config $config,
-        CollectOrderData $collectOrderData
+        CollectOrderData $collectOrderData,
+        PushDetailsToWebService $pushDetailsToWebService
     ){
         $this->orderRepository = $orderRepository;
         $this->config = $config;
         $this->collectOrderData = $collectOrderData;
+        $this->pushDetailsToWebService = $pushDetailsToWebService;
     }
     public function execute(int $orderId, HeaderData $headerData): array
     {
@@ -43,7 +50,9 @@ class ExportOrder
         $results = ['success' => false, 'error' => null];
 
         $exportData = $this->collectOrderData->execute($order, $headerData);
-        //TODO Export data to web service, save export details
+
+        $results['success'] = $this->pushDetailsToWebService->execute($exportData, $order);
+        //TODO save export details
 
         return $results;
     }
